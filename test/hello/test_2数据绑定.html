@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../js/vue.js"/>
+		</script>
+	</head>
+	<body>
+		<div id="test1">
+			<h1>插值语法{{aaaa}}</h1>
+			<h2>指令语法</h2>
+			<a :href="url">单向绑定</a>
+			<br />
+			<input type="text" v-model="b" />
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+	Vue.config.productionTip = false;
+		new Vue({
+			el:'#test1',
+			data:{
+				aaaa:'hello',
+				url:'http://www.baidu.com',
+				b:'年后'
+			}
+		})
+	</script>
+</html>

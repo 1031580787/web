@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>列表排序</title>
+		<script type="text/javascript" src="../js/vue.js">
+		</script>
+	</head>
+	<body>	
+			<div id="test">
+				查询条件：<input type="text" placeholder="请输入关键字" v-model="keyword"/>
+				<button @click="sortType=1">升序</button>
+				<button @click="sortType=2">降序</button>
+				<button @click="sortType=0">原顺序</button>
+				<ul >
+					<li v-for="list in comArray" :key="list.id">
+					id：{{list.id}}；name：{{list.name}}；age：{{list.age}}</li>
+				</ul>
+			</div>
+			
+			
+	</body>
+	<script type="text/javascript">
+		 const vm = new Vue({
+			el:"#test",
+			data:{
+				sortType:0,
+				keyword:'',
+				arrayList:[
+					{id:'01',name:'张三',age:'19'},
+					{id:'02',name:'李四',age:'17'},
+					{id:'03',name:'张四',age:'20'}
+				]
+			},
+			computed:{
+				comArray(){
+					const arr = this.arrayList.filter((p)=>{
+						return (p.name.indexOf(this.keyword) ) != -1
+					})
+					if(this.sortType){
+						arr.sort((a1,a2)=>{
+							return (this.sortType===1)? a1.age-a2.age:a2.age-a1.age;
+						})
+					}
+					return arr
+				}
+			} 
+			/* watch:{
+				keyword:{
+					immediate:true,
+					handler(val){
+						this.comArray = this.arrayList.filter((p)=>{
+							return (p.name.indexOf(val) ) != -1
+							}) 
+					}
+				}
+			} */
+		});
+	</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../js/vue.js">
+		</script>
+	</head>
+	<body>
+		<div id="test">
+			天气：<span>{{info}}</span>
+			<br/>
+			<button type="button" @click="fun1()">点击切换</button>
+			<br/>
+		</div>
+	</body>
+	<script type="text/javascript">
+		new Vue({
+			el:"#test",
+			data:{
+				isHot:true,
+				info:'热'
+			},
+			methods:{
+				fun1(){
+					this.isHot = !this.isHot
+				}
+			},
+			watch:{
+				isHot(o1,o2){
+					console.log(o1,o2);
+					this.info = this.isHot === true ? '热':'冷'
+				}
+				}
+			
+			
+		});
+	</script>
+</html>

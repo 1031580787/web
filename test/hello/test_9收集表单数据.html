@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>列表排序</title>
+		<script type="text/javascript" src="../js/vue.js">
+		</script>
+	</head>
+	<body>	
+			<form id="test" @submit.prevent="demo">
+				账户：<input type="text" v-model.lazy.trim="info.account" placeholder="请输入账户" /> <br><br>
+				密码：<input type="password" v-model="info.pwd" /> <br><br>
+				年龄：<input type="number" v-model.number="info.age" /> <br><br>
+				性别：男:<input type="radio" name="s" v-model="info.sex" value="M" />
+					  女: <input type="radio" name="s" v-model="info.sex" value="F"/> <br><br>
+				爱好：
+					看书 <input type="checkbox" v-model="info.hobby" value="r"/> 
+					睡觉 <input type="checkbox" v-model="info.hobby" value="s"/> 
+					吃饭 <input type="checkbox" v-model="info.hobby" value="e"/> <br><br>
+				城市：
+					<select v-model="info.city">
+						<option value="0">请选择</option>
+						<option value="1">北京</option>
+						<option value="2">上海</option>
+						<option value="3">西安</option>
+					</select> <br> <br>
+					
+				留言：<textarea v-model="info.ly"></textarea> <br><br>
+				
+				协议：<input type="checkbox" v-model="info.ischeck"> 请勾选协议 <a href="http://www.baidu.com">账户开立协议</a>
+				<br><br>
+				<button >提交</button>
+			</form>
+			
+			
+	</body>
+	<script type="text/javascript">
+		 const vm = new Vue({
+			el:"#test",
+			data:{
+				info:{
+					account:'',
+					pwd:'',
+					sex:'M',
+					hobby:[],
+					city:'0',
+					ly:'',
+					ischeck:'',
+					age:18
+				}
+			},
+			methods:{
+				demo(){
+					console.log(JSON.stringify(this.info) )
+				}
+			}
+		});
+	</script>
+</html>

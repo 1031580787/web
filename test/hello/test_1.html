@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+	div {
+		padding:5px
+	}
+	
+	.div1 {
+		background-color: aqua;
+	}
+	
+	</style>
+	<script src="../js/vue.js"></script>
+	<body>
+		
+		<h1>插值语法</h1>
+		<div id="test1">
+			<div>111，{{name}}</div>
+			<h1>指令语法</h1>
+			<a v-bind:href="url.toUpperCase()">跳转1</a>
+			<a :href="url"  @click.prevent = "f1($event,999)">跳转2</a>
+			<br/>
+			<input type="text" name="aaa" id="" v-model:value="aaa" />
+			<input type="text" name="bbb" id="" v-model="aaa" />
+			<br/>
+			<br>
+			<button id="aaa" type="button" @click="f1($event,888)">点击按钮</button>
+			
+			<br />
+			
+			<div @click="f1($event,999)" class="div1" >
+				<div @click.once ="f1($event,888)">阻止冒泡</div>
+			</div>
+		</div>
+		
+		<script>
+		var vm = new Vue({
+			el: '#test1',
+			data:{
+				'name': '插值语法',
+				'url': 'http://www.baidu.com',
+				'aaa': '测试标签体'
+				
+			},
+			methods:{
+				f1(event,a){
+					console.log(event.target.id)
+					alert('你好!!'+a);
+				}
+			}
+		})
+		
+		</script>
+	</body>
+</html>

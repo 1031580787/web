@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>过滤器</title>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript" src="../js/dayjs.min.js">
+		</script>
+	</head>
+	<body>	
+		<div id="test">
+			当前时间：{{time}} <br><br>
+			methods格式化时间: {{getFormat()}}<br><br>
+			compute格式化时间： {{formatTime}}<br><br>
+			过滤器格式化时间：{{time | getFilterTime }}<br><br>
+			传参过滤器格式化时间：{{time | getFilterTime('YYYY-MM-DD') | mySlice}}
+		</div>
+			
+			
+	</body>
+	<script type="text/javascript">
+		Vue.filter('mySlice',function(p){
+			return p.slice(0,4)
+		})
+		 const vm = new Vue({
+			el:"#test",
+			data:{
+				time:1702523139519
+			},
+			computed:{
+				formatTime(){
+					return dayjs(this.time).format('YYYY年MM月DD日 HH:mm:ss')
+				}
+			},
+			methods:{
+				getFormat(){
+					return dayjs(this.time).format('YYYY年MM月DD日 HH:mm:ss')
+				}
+			},
+			filters:{
+				getFilterTime(a ,val = 'YYYY年MM月DD日 HH:mm:ss'){
+					return dayjs(a).format(val)
+				}
+			}
+		});
+	</script>
+</html>

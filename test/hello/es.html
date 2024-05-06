@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<div>888888</div>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript" src="jquery-1.9.1.js">
+	</script>
+	<script type="text/javascript">
+		console.log(999999)
+				function timeOut(ms){
+				 return	new Promise((resolved,rejected)=>{
+						setTimeout(()=>{
+							resolved("success")
+						},ms)
+					})
+				}
+				timeOut(1).then((val)=>{
+					console.log(val)
+				})
+	</script>
+</html>

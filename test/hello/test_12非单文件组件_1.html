@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>内置指令</title>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript" src="../js/dayjs.min.js">
+		</script>
+	</head>
+	<body>	
+		<div id="test">
+			<school></school>
+			<school-address></school-address>
+			<school-type></school-type>
+		</div>
+			
+			
+	</body>
+	<script type="text/javascript">
+	//创建组件
+	const school = Vue.extend({
+			template:`<div>学校：{{schoolName}}</div>`,
+			data(){
+				return {
+					schoolName:'西电'
+				}
+			}
+	})
+	const schoolAddress = Vue.extend({
+			template:`<div>学校地址：{{schoolAddress}}</div>`,
+			data(){
+				return {
+					schoolAddress:'长安'
+				}
+			}
+	})
+	
+	const schoolType = {
+		template:`<div>学校类型：{{schoolType}}</div>`,
+		data(){
+			return {
+				schoolType:'211'
+			}
+		}
+	}
+	Vue.component('school-address',schoolAddress)
+	Vue.component('school-type',schoolType)
+	//注册组件
+	new Vue({
+		el:'#test',
+		components:{
+			school
+		}
+	})
+	</script>
+</html>
