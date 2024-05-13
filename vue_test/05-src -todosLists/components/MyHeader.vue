@@ -13,10 +13,11 @@
 				newItem:''
 			}
 		},
+		props:['addTodos1'],
 		methods:{
 			addItem(){
 				const o = {id:nanoid(),name:this.newItem,done:false}
-				this.$emit('addTodos1',o)
+				this.addTodos1(o)
 				this.newItem=''
 			}
 		}

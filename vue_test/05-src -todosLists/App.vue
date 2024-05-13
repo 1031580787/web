@@ -1,8 +1,8 @@
 <template>
 	<div>
-		<MyHeader @addTodos1="addTodos"></MyHeader>
-		<MyList :todos1="todos" @deleteTodos="deleteTodos" @changeCheck="changeCheck"></MyList>
-		<MyFooter :todos1="todos" @clearTodos="clearTodos" v-on:checkAllTodo="checkAllTodo"></MyFooter>
+		<MyHeader :addTodos1="addTodos"></MyHeader>
+		<MyList :todos1="todos" :deleteTodos="deleteTodos" :changeCheck="changeCheck"></MyList>
+		<MyFooter :todos1="todos" :clearTodos="clearTodos" :checkAllTodo="checkAllTodo"></MyFooter>
 	</div>
 </template>
 

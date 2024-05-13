@@ -27,14 +27,14 @@
 					return this.all===this.finished && this.all >0
 				},
 				set(value){
-					this.$emit('checkAllTodo',value)
+					this.checkAllTodo(value)
 				}
 			}
 		},
-		props: ['todos1'],
+		props: ['todos1','clearTodos','checkAllTodo'],
 		methods:{
 			clearAll(){
-				this.$emit('clearTodos')
+				this.clearTodos()
 			}
 		}
 	}
