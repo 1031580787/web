@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<MyHeader @addTodos1="addTodos"></MyHeader>
-		<MyList :todos1="todos" @deleteTodos="deleteTodos" @changeCheck="changeCheck"></MyList>
+		<MyList :todos1="todos"></MyList>
 		<MyFooter :todos1="todos" @clearTodos="clearTodos" v-on:checkAllTodo="checkAllTodo"></MyFooter>
 	</div>
 </template>
@@ -54,6 +54,14 @@
 					localStorage.setItem('todos',JSON.stringify(v))
 				}
 			}
+		},
+		mounted() {
+			this.$bus.$on('deleteTodos',this.deleteTodos)
+			this.$bus.$on('changeCheck',this.changeCheck)
+		},
+		beforeDestroy() {
+			this.$bus.$off('deleteTodos')
+			this.$bus.$off('changeCheck')
 		}
 	}
 </script>

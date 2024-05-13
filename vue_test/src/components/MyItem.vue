@@ -11,13 +11,14 @@
 <script>
 	export default {
 		name: 'MyItem',
-		props: ['todos2', 'deleteTodos','changeCheck'],
+		props: ['todos2'],
 		methods: {
 			deteleBtn() {
-				this.deleteTodos(this.todos2.id)
+				this.$bus.$emit('deleteTodos',this.todos2.id)
+				
 			},
 			check(id){
-				this.changeCheck(id)
+				this.$bus.$emit('changeCheck',id)
 			}
 		}
 	}
